@@ -1,0 +1,27 @@
+.page { padding: 32px; min-height: 100vh; }
+.header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 28px; gap: 16px; flex-wrap: wrap; }
+.title { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--black); }
+.subtitle { font-size: 14px; color: var(--gray-text); margin-top: 3px; }
+.formCard { background: var(--white); border: 1px solid var(--gray-soft); border-radius: var(--radius-lg); padding: 28px; margin-bottom: 24px; }
+.formTitle { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--black); margin-bottom: 20px; }
+.form {}
+.formGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+.formActions { display: flex; justify-content: flex-end; gap: 12px; }
+.loading { text-align: center; padding: 40px; color: var(--gray-text); }
+.table { display: flex; flex-direction: column; gap: 8px; }
+.row { background: var(--white); border: 1px solid var(--gray-soft); border-radius: var(--radius-md); padding: 16px 20px; display: flex; align-items: center; gap: 16px; transition: var(--transition); }
+.row:hover { box-shadow: var(--shadow-card); border-color: var(--gray-mid); }
+.rowImg { font-size: 28px; flex-shrink: 0; }
+.rowInfo { flex: 1; min-width: 0; }
+.rowName { font-size: 15px; font-weight: 600; color: var(--black); }
+.rowMeta { font-size: 12px; color: var(--gray-text); margin-top: 3px; }
+.rowPrice { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--black); white-space: nowrap; }
+.rowActive {}
+.badge { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: var(--radius-pill); }
+.badgeOn { background: var(--success-bg); color: var(--success); }
+.badgeOff { background: var(--error-bg); color: var(--error); }
+.rowActions { display: flex; gap: 8px; align-items: center; }
+.deleteBtn { font-size: 13px; color: var(--error); background: none; border: none; cursor: pointer; padding: 4px 8px; transition: opacity 0.2s; }
+.deleteBtn:hover { opacity: 0.7; }
+.empty { text-align: center; padding: 48px; color: var(--gray-text); background: var(--white); border-radius: var(--radius-md); border: 1px dashed var(--gray-mid); }
+@media (max-width: 600px) { .formGrid { grid-template-columns: 1fr; } .row { flex-wrap: wrap; } }

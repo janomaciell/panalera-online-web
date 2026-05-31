@@ -1,0 +1,56 @@
+.card {
+  background: var(--white);
+  border: 1px solid var(--gray-soft);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: var(--transition);
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-float);
+  border-color: var(--gray-mid);
+}
+.badge {
+  position: absolute; top: 14px; left: 14px; z-index: 2;
+  background: var(--black); color: var(--white);
+  font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: var(--radius-pill);
+}
+.badgeBlue { background: var(--blue-text); }
+.imgWrapper {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--beige) 0%, var(--blue-soft) 60%, var(--beige) 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+.img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.card:hover .img { transform: scale(1.04); }
+.body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+.size { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-text); margin-bottom: 5px; }
+.name { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--black); margin-bottom: 3px; }
+.qty { font-size: 13px; color: var(--gray-text); margin-bottom: 18px; flex: 1; }
+.footer { display: flex; align-items: center; justify-content: space-between; }
+.priceRow { display: flex; align-items: baseline; gap: 6px; }
+.price { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--black); }
+.priceOld { font-size: 13px; color: var(--gray-text); text-decoration: line-through; }
+.addBtn {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--black); color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--transition);
+  border: none; cursor: pointer;
+}
+.addBtn:hover { transform: scale(1.1); }
+.addBtnSuccess {
+  background: var(--success) !important;
+}
+.stockWarn { font-size: 12px; color: var(--warning); margin-top: 10px; font-weight: 500; display: flex; align-items: center; }
+.stockOut { font-size: 12px; color: var(--error); margin-top: 10px; font-weight: 600; }

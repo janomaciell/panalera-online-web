@@ -1,0 +1,34 @@
+.page { padding: 110px 0 80px; min-height: 100vh; }
+.back { font-size: 14px; color: var(--gray-text); display: inline-flex; align-items: center; margin-bottom: 32px; transition: color 0.2s; }
+.back:hover { color: var(--black); }
+.loading { min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 16px; color: var(--gray-text); padding-top: 80px; }
+.loadingContainer {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 110px 24px 80px;
+}
+.layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.imgWrapper {
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, var(--beige), var(--blue-soft));
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+.img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.sizeTag { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-text); margin-bottom: 8px; }
+.title { font-family: var(--font-display); font-size: 40px; font-weight: 700; color: var(--black); margin-bottom: 8px; letter-spacing: -0.02em; }
+.qty { font-size: 14px; color: var(--gray-text); margin-bottom: 20px; }
+.priceRow { display: flex; align-items: baseline; gap: 10px; margin-bottom: 24px; }
+.price { font-family: var(--font-display); font-size: 36px; font-weight: 700; color: var(--black); }
+.priceOld { font-size: 18px; color: var(--gray-text); text-decoration: line-through; }
+.desc { font-size: 15px; color: var(--gray-text); line-height: 1.7; margin-bottom: 24px; }
+.badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+.badge { font-size: 13px; font-weight: 500; background: var(--success-bg); color: var(--success); border-radius: var(--radius-pill); padding: 5px 12px; display: inline-flex; align-items: center; gap: 6px; }
+.badgeIcon { font-size: 14px; }
+.addBtn { width: 100%; justify-content: center; font-size: 16px; padding: 16px; }
+.stockWarn { font-size: 13px; color: var(--warning); margin-top: 14px; font-weight: 500; display: flex; align-items: center; }
+@media (max-width: 768px) {
+  .layout { grid-template-columns: 1fr; gap: 32px; }
+}

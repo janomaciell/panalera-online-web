@@ -1,0 +1,50 @@
+.wrapper { display: flex; flex-direction: column; gap: 16px; }
+.methods { display: flex; flex-direction: column; gap: 10px; }
+.methodBtn {
+  display: flex; align-items: center; gap: 16px;
+  padding: 18px 20px;
+  border: 1.5px solid var(--gray-soft);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  cursor: pointer; transition: var(--transition);
+  text-align: left; width: 100%;
+}
+.methodBtn:hover { border-color: var(--gray-mid); box-shadow: var(--shadow-card); }
+.methodBtn.active { border-color: var(--black); background: var(--white); }
+.methodIcon { font-size: 24px; flex-shrink: 0; }
+.methodTitle { font-size: 15px; font-weight: 600; color: var(--black); }
+.methodSub { font-size: 12px; color: var(--gray-text); margin-top: 2px; }
+.radio {
+  width: 20px; height: 20px; border-radius: 50%;
+  border: 1.5px solid var(--gray-mid);
+  margin-left: auto; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.2s;
+}
+.active .radio { border-color: var(--black); }
+.radioDot { width: 10px; height: 10px; border-radius: 50%; background: var(--black); }
+.label { font-size: 13px; font-weight: 500; color: var(--black); display: block; margin-bottom: 8px; }
+.select {
+  width: 100%; padding: 12px 16px;
+  border: 1.5px solid var(--gray-soft); border-radius: var(--radius-sm);
+  font-size: 15px; font-family: var(--font-body);
+  background: var(--white); color: var(--black);
+  cursor: pointer; outline: none;
+  transition: border-color 0.2s;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center;
+  padding-right: 40px;
+}
+.select:focus { border-color: var(--blue-deep); box-shadow: 0 0 0 3px rgba(123,175,224,0.15); }
+.skeleton { height: 48px; border-radius: var(--radius-sm); }
+.noZones { font-size: 13px; color: var(--warning); }
+.pickupInfo {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 18px;
+  background: var(--blue-soft); border-radius: var(--radius-md);
+  border: 1px solid var(--blue-mid);
+}
+.pickupIcon { font-size: 24px; flex-shrink: 0; }
+.pickupTitle { font-size: 14px; font-weight: 600; color: var(--black); }
+.pickupSub { font-size: 12px; color: var(--blue-text); margin-top: 2px; }

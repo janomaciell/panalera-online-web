@@ -1,0 +1,31 @@
+.page { padding: 32px; min-height: 100vh; }
+.header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 24px; gap: 16px; flex-wrap: wrap; }
+.title { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--black); }
+.subtitle { font-size: 14px; color: var(--gray-text); margin-top: 3px; }
+.refCard { background: var(--blue-soft); border: 1px solid var(--blue-mid); border-radius: var(--radius-md); padding: 18px 22px; margin-bottom: 24px; }
+.refTitle { font-size: 13px; font-weight: 600; color: var(--blue-text); margin-bottom: 12px; }
+.refGrid { display: flex; gap: 20px; flex-wrap: wrap; }
+.refGroup {}
+.refGroupLabel { font-size: 12px; font-weight: 700; color: var(--black); margin-bottom: 4px; }
+.refCities { font-size: 12px; color: var(--gray-text); }
+.formCard { background: var(--white); border: 1px solid var(--gray-soft); border-radius: var(--radius-lg); padding: 28px; margin-bottom: 24px; }
+.formTitle { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--black); margin-bottom: 20px; }
+.formGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+.formActions { display: flex; justify-content: flex-end; gap: 12px; }
+.loading { text-align: center; padding: 40px; color: var(--gray-text); }
+.table { display: flex; flex-direction: column; gap: 8px; }
+.row { background: var(--white); border: 1px solid var(--gray-soft); border-radius: var(--radius-md); padding: 16px 20px; display: flex; align-items: center; gap: 16px; transition: var(--transition); }
+.row:hover { box-shadow: var(--shadow-card); }
+.rowInactive { opacity: 0.55; }
+.rowInfo { flex: 1; min-width: 0; }
+.rowCity { font-size: 15px; font-weight: 600; color: var(--black); }
+.rowMeta { font-size: 12px; color: var(--gray-text); margin-top: 3px; }
+.rowPrice { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--black); white-space: nowrap; min-width: 90px; }
+.toggleBtn { font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: var(--radius-pill); border: none; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+.toggleOn { background: var(--success-bg); color: var(--success); }
+.toggleOff { background: var(--gray-soft); color: var(--gray-text); }
+.rowActions { display: flex; gap: 8px; }
+.deleteBtn { font-size: 13px; color: var(--error); background: none; border: none; cursor: pointer; padding: 4px 8px; }
+.deleteBtn:hover { opacity: 0.7; }
+.empty { text-align: center; padding: 48px; color: var(--gray-text); background: var(--white); border-radius: var(--radius-md); border: 1px dashed var(--gray-mid); }
+@media (max-width: 600px) { .formGrid { grid-template-columns: 1fr; } .row { flex-wrap: wrap; } }

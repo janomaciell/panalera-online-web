@@ -1,0 +1,42 @@
+{% extends "base_email.html" %}
+{% block title %}Tu pedido salió — Pañalera Online{% endblock %}
+{% block content %}
+<div class="big-icon">🚚</div>
+<div class="greeting">¡Salió, {{ customer_name }}!</div>
+<p class="intro">Tu pedido <strong>#{{ order_id }}</strong> acaba de salir desde Chascomús rumbo a la costa. Ya casi llega.</p>
+
+<div class="info-card" style="background: #111111;">
+  <div style="display: flex; align-items: center; gap: 14px;">
+    <div style="font-size: 32px;">📍</div>
+    <div>
+      <div class="info-card-title" style="color: #FFFFFF;">Destino: {{ shipping_city }}</div>
+      <div class="info-card-text" style="color: rgba(255,255,255,0.55);">
+        {% if is_pickup %}
+          Pasá a retirar cuando quieras — ya está listo en Chascomús.
+        {% else %}
+          En camino. La entrega es directa en tu domicilio.
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section-label">Lo que viene en camino</div>
+<table class="items-table">
+  {% for item in items %}
+  <tr>
+    <td>
+      <div class="item-name">{{ item.product.title }}</div>
+      <div class="item-size">Talle {{ item.product.size }} · x{{ item.quantity }}</div>
+    </td>
+    <td class="item-price">${{ item.subtotal|floatformat:0 }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<p style="font-size: 13px; color: #888884; text-align: center; margin-top: 24px;">
+  ¿Alguna consulta? Escribinos a <a href="mailto:hola@panalera.com" style="color: #2E6EA6;">hola@panalera.com</a>
+</p>
+{% endblock %}

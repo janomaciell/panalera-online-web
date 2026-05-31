@@ -1,0 +1,79 @@
+.section { padding: 120px 0; background: var(--beige); }
+.layout { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 80px; align-items: start; }
+.title { text-align: left; margin-top: 16px; margin-bottom: 12px; }
+.sub { font-size: 16px; color: var(--gray-text); line-height: 1.65; margin-bottom: 36px; max-width: 460px; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px; }
+.item {
+  background: var(--white); border-radius: var(--radius-md);
+  padding: 20px; display: flex; flex-direction: column; gap: 8px;
+  box-shadow: var(--shadow-card); transition: var(--transition);
+}
+.item:hover { transform: translateY(-3px); box-shadow: var(--shadow-float); }
+.itemIcon {
+  width: 40px; height: 40px; border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+.icon_green { background: var(--success-bg); color: var(--success); }
+.icon_blue { background: var(--blue-soft); color: var(--blue-text); }
+.icon_beige { background: var(--beige-deep); color: var(--warning); }
+.item h4 { font-size: 13px; font-weight: 600; color: var(--black); }
+.item p { font-size: 12px; color: var(--gray-text); line-height: 1.5; }
+.noBox { background: var(--white); border-radius: var(--radius-md); padding: 22px; box-shadow: var(--shadow-card); }
+.noTitle { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray-text); margin-bottom: 14px; }
+.noList { display: flex; flex-wrap: wrap; gap: 8px; }
+.noTag {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 12px; font-weight: 500;
+  background: var(--error-bg); color: var(--error);
+  border: 1px solid #FECACA;
+  border-radius: var(--radius-pill); padding: 5px 11px;
+}
+
+/* Visual */
+.visual { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 88px; }
+.visualCard {
+  background: var(--white); border-radius: var(--radius-xl);
+  padding: 28px; box-shadow: var(--shadow-float); text-align: center;
+  overflow: hidden;
+}
+.visualImgWrapper {
+  width: 100%; aspect-ratio: 16/9;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.visualImg {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.visualCard h3 { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
+.visualCard p { font-size: 14px; color: var(--gray-text); line-height: 1.6; }
+.visualBadges { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.visualBadge {
+  background: var(--white); border: 1px solid var(--gray-soft);
+  border-radius: var(--radius-sm); padding: 12px 14px;
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 500; color: var(--black);
+  box-shadow: var(--shadow-card);
+}
+.badgeIcon {
+  display: flex; align-items: center; color: var(--blue-text);
+  font-size: 16px;
+}
+.certCard {
+  background: var(--black); border-radius: var(--radius-md);
+  padding: 16px 20px; display: flex; align-items: center; gap: 14px;
+}
+.certIcon { font-size: 24px; color: var(--white); display: flex; align-items: center; }
+.certTitle { font-size: 14px; font-weight: 600; color: var(--white); }
+.certSub { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+
+@media (max-width: 900px) {
+  .section { padding: 60px 0; }
+  .layout { grid-template-columns: 1fr; gap: 48px; }
+  .visual { position: static; }
+}
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; }
+  .visualBadges { grid-template-columns: 1fr; }
+}

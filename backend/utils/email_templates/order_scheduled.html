@@ -1,0 +1,46 @@
+{% extends "base_email.html" %}
+{% block title %}Fecha de envío — Pañalera Online{% endblock %}
+{% block content %}
+<div class="big-icon">📅</div>
+<div class="greeting">Ya tenés fecha, {{ customer_name }}</div>
+<p class="intro">Tu pedido <strong>#{{ order_id }}</strong> fue asignado al próximo ciclo de envío. Anotá la fecha.</p>
+
+{% if ship_date %}
+<div class="info-card" style="background: #111111; border-radius: 16px; text-align: center; padding: 28px;">
+  <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 8px;">Tu pedido sale el</div>
+  <div style="font-size: 32px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.02em; margin-bottom: 4px;">{{ ship_date }}</div>
+  <div style="font-size: 13px; color: rgba(255,255,255,0.5);">directo a {{ shipping_city }}</div>
+</div>
+{% endif %}
+
+{% if cutoff_date %}
+<div style="text-align: center; margin-top: 16px; font-size: 13px; color: #888884;">
+  Cierre de pedidos: <strong style="color: #111111;">{{ cutoff_date }}</strong>
+</div>
+{% endif %}
+
+<div class="divider"></div>
+
+<div class="section-label">Resumen del pedido</div>
+<table class="items-table">
+  {% for item in items %}
+  <tr>
+    <td>
+      <div class="item-name">{{ item.product.title }}</div>
+      <div class="item-size">Talle {{ item.product.size }} · x{{ item.quantity }}</div>
+    </td>
+    <td class="item-price">${{ item.subtotal|floatformat:0 }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<div class="total-row">
+  <div class="total-label">Total</div>
+  <div class="total-value">${{ total|floatformat:0 }}</div>
+</div>
+
+<div class="info-card" style="margin-top: 24px;">
+  <div class="info-card-icon">💡</div>
+  <div class="info-card-title">¿Qué pasa ahora?</div>
+  <div class="info-card-text">Estamos preparando tu pedido. Recibirás otro email cuando salga hacia la costa.</div>
+</div>
+{% endblock %}

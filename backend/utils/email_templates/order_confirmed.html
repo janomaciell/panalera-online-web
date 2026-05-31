@@ -1,0 +1,55 @@
+{% extends "base_email.html" %}
+{% block title %}Pedido confirmado — Pañalera Online{% endblock %}
+{% block content %}
+<div class="big-icon">✅</div>
+<div class="greeting">¡Pedido confirmado, {{ customer_name }}!</div>
+<p class="intro">Recibimos tu pago y ya estamos preparando todo. Te avisaremos en cada etapa del camino.</p>
+
+<div class="section-label">Tu pedido · #{{ order_id }}</div>
+<table class="items-table">
+  {% for item in items %}
+  <tr>
+    <td>
+      <div class="item-name">{{ item.product.title }}</div>
+      <div class="item-size">Talle {{ item.product.size }} · {{ item.quantity }} unidad{% if item.quantity > 1 %}es{% endif %}</div>
+    </td>
+    <td class="item-price">${{ item.subtotal|floatformat:0 }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% if not is_pickup and shipping_price %}
+<table class="items-table" style="margin-top: 8px;">
+  <tr>
+    <td><div class="item-name" style="color: #888884;">Envío a {{ shipping_city }}</div></td>
+    <td class="item-price" style="color: #888884;">${{ shipping_price|floatformat:0 }}</td>
+  </tr>
+</table>
+{% endif %}
+
+<div class="total-row">
+  <div class="total-label">Total pagado</div>
+  <div class="total-value">${{ total|floatformat:0 }}</div>
+</div>
+
+<div class="divider"></div>
+
+{% if is_pickup %}
+<div class="info-card">
+  <div class="info-card-icon">🏪</div>
+  <div class="info-card-title">Retiro en Chascomús</div>
+  <div class="info-card-text">Te avisaremos cuando tu pedido esté listo para retirar. Coordinamos día y horario por WhatsApp.</div>
+</div>
+{% else %}
+<div class="info-card">
+  <div class="info-card-icon">📦</div>
+  <div class="info-card-title">¿Cuándo llega?</div>
+  <div class="info-card-text">
+    Tu pedido sale el <strong>{% if ship_date %}{{ ship_date }}{% else %}próximo envío{% endif %}</strong> desde Chascomús directo a {{ shipping_city }}.
+    Enviamos el 1° y el 15 de cada mes.
+  </div>
+</div>
+{% endif %}
+
+<a href="{{ frontend_url }}/perfil" class="cta-btn">Ver mis pedidos</a>
+{% endblock %}

@@ -1,0 +1,20 @@
+.layout { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; background: #F7F7F5; }
+.sidebar { background: var(--black); display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+.sidebarTop { padding: 28px 24px 20px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.sidebarLogo { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--white); }
+.sidebarLogo span { color: var(--blue-deep); }
+.sidebarLabel { font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.3); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; }
+.nav { flex: 1; padding: 16px 12px; display: flex; flex-direction: column; gap: 2px; }
+.navItem { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.5); transition: all 0.2s; }
+.navItem:hover { background: rgba(255,255,255,0.06); color: var(--white); }
+.navActive { background: rgba(255,255,255,0.1) !important; color: var(--white) !important; }
+.navIcon { font-size: 16px; }
+.sidebarBottom { padding: 16px 12px; border-top: 1px solid rgba(255,255,255,0.07); }
+.userInfo { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.userAvatar { width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; color: var(--white); flex-shrink: 0; }
+.userName { font-size: 13px; font-weight: 600; color: var(--white); }
+.userRole { font-size: 11px; color: rgba(255,255,255,0.35); }
+.logoutBtn { width: 100%; padding: 8px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-sm); color: rgba(255,255,255,0.4); font-size: 13px; cursor: pointer; transition: all 0.2s; }
+.logoutBtn:hover { background: rgba(255,255,255,0.1); color: var(--white); }
+.main { min-height: 100vh; overflow: auto; }
+@media (max-width: 768px) { .layout { grid-template-columns: 1fr; } .sidebar { position: fixed; left: -100%; z-index: 200; } }

@@ -1,0 +1,302 @@
+.page {
+  padding: 120px 0 80px;
+  min-height: 100vh;
+  background: var(--white);
+}
+
+.calculatorCard {
+  background: var(--beige);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  margin-bottom: 56px;
+  border: 1px solid var(--beige-deep);
+}
+
+.calcHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.calcHeader h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--black);
+  margin: 0;
+}
+
+.calcHeader p {
+  font-size: 13px;
+  color: var(--gray-text);
+  margin: 2px 0 0 0;
+}
+
+.calcIcon {
+  color: var(--blue-text);
+}
+
+.calcForm {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.calcInput {
+  flex: 1;
+  padding: 12px 18px;
+  border: 1.5px solid var(--gray-soft);
+  border-radius: var(--radius-pill);
+  font-size: 15px;
+  background: var(--white);
+  color: var(--black);
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.calcInput:focus {
+  border-color: var(--blue-deep);
+  box-shadow: 0 0 0 3px rgba(123, 175, 224, 0.15);
+}
+
+.calcResult {
+  animation: fadeIn 0.3s ease;
+}
+
+.resultSuccess {
+  background: var(--success-bg);
+  border: 1.5px solid var(--success);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  color: var(--success);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.resultSuccess strong {
+  display: block;
+  font-size: 14px;
+}
+
+.resultSuccess span {
+  display: block;
+  font-size: 13px;
+  opacity: 0.85;
+  margin-top: 2px;
+}
+
+.resultSuccessIcon {
+  flex-shrink: 0;
+}
+
+.resultFail {
+  background: var(--error-bg);
+  border: 1.5px solid var(--error);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  color: var(--error);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.resultFail strong {
+  display: block;
+  font-size: 14px;
+}
+
+.resultFail span {
+  display: block;
+  font-size: 13px;
+  opacity: 0.85;
+  margin-top: 2px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.subTitle {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 24px;
+}
+
+.zonesList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.zoneCard {
+  background: var(--beige);
+  border: 1px solid var(--beige-deep);
+  border-radius: var(--radius-md);
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: var(--transition);
+}
+
+.zoneCard:hover {
+  background: var(--white);
+  box-shadow: var(--shadow-card);
+  border-color: var(--gray-mid);
+}
+
+.zoneLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+.zoneNum {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--black);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.zoneTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.zoneCities {
+  font-size: 12px;
+  color: var(--gray-text);
+  margin-top: 2px;
+}
+
+.zonePrice {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--black);
+  white-space: nowrap;
+  margin-left: 12px;
+}
+
+.zonePickup {
+  background: var(--blue-soft);
+  border-color: var(--blue-mid);
+}
+
+.zonePriceBlue {
+  color: var(--blue-text);
+  font-size: 14px;
+}
+
+.calendarCard {
+  background: var(--beige);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  position: sticky;
+  top: 88px;
+}
+
+.calendarIcon {
+  color: var(--black);
+}
+
+.calCycles {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.calCycle {
+  background: var(--white);
+  border: 1px solid var(--gray-soft);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+}
+
+.calCycleActive {
+  background: var(--black);
+  border-color: var(--black);
+}
+
+.calCycleLabel {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray-text);
+  margin-bottom: 4px;
+}
+
+.calCycleActive .calCycleLabel {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.calCycleDate {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--black);
+}
+
+.calCycleActive .calCycleDate {
+  color: var(--white);
+}
+
+.calCycleSub {
+  font-size: 12px;
+  color: var(--gray-text);
+  margin-top: 3px;
+}
+
+.calCycleActive .calCycleSub {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.calCycleActive .calCycleSub strong {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.calNote {
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  border-left: 3px solid var(--blue-deep);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .page {
+    padding: 90px 0 60px;
+  }
+  .calcForm {
+    flex-direction: column;
+  }
+  .calcForm button {
+    width: 100%;
+  }
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .calendarCard {
+    position: static;
+  }
+}

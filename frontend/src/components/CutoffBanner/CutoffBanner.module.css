@@ -1,0 +1,88 @@
+.infoBar {
+  background: var(--black);
+  padding: 13px 0;
+  overflow: hidden;
+}
+.infoInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+.infoInner::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+.infoItem {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: rgba(255,255,255,0.75);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.infoIcon {
+  display: flex;
+  align-items: center;
+  color: var(--blue-mid);
+  font-size: 14px;
+}
+.infoItem strong { font-weight: 600; color: var(--white); }
+
+.banner {
+  background: var(--blue-soft);
+  border-bottom: 1px solid var(--blue-mid);
+  padding: 18px 0;
+}
+.inner {
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 24px; flex-wrap: wrap;
+}
+.left { display: flex; align-items: center; gap: 14px; }
+.icon {
+  width: 44px; height: 44px; background: var(--white);
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--blue-text);
+  flex-shrink: 0;
+  box-shadow: var(--shadow-card);
+}
+.left h4 { font-size: 14px; font-weight: 600; color: var(--black); }
+.left p { font-size: 12px; color: var(--blue-text); margin-top: 1px; }
+.dates { display: flex; gap: 10px; flex-wrap: wrap; }
+.pill {
+  background: var(--white);
+  border: 1px solid var(--blue-mid);
+  border-radius: var(--radius-sm);
+  padding: 8px 16px; text-align: center;
+  box-shadow: var(--shadow-card);
+  min-width: 120px;
+}
+.pillLabel { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-text); }
+.pillDate { font-size: 16px; font-weight: 700; color: var(--black); font-family: var(--font-display); }
+.pillSub { font-size: 11px; color: var(--blue-text); font-weight: 500; margin-top: 1px; }
+.pillActive { background: var(--black); border-color: var(--black); }
+.pillActive .pillLabel { color: rgba(255,255,255,0.5); }
+.pillActive .pillDate { color: var(--white); }
+.pillActive .pillSub { color: rgba(255,255,255,0.7); }
+
+@media (max-width: 768px) {
+  .infoInner {
+    justify-content: flex-start;
+    gap: 24px;
+    padding: 0 4px;
+  }
+  .inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  .dates {
+    width: 100%;
+  }
+  .pill {
+    flex: 1;
+  }
+}

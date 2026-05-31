@@ -1,0 +1,33 @@
+.page {
+  padding: 120px 0 80px;
+  min-height: 100vh;
+  background: var(--white);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.empty {
+  text-align: center;
+  padding: 60px 24px;
+  background: var(--beige);
+  border-radius: var(--radius-xl);
+  color: var(--gray-text);
+  font-size: 15px;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 90px 0 60px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

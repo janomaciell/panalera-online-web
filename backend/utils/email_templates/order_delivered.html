@@ -1,0 +1,29 @@
+{% extends "base_email.html" %}
+{% block title %}Pedido entregado — Pañalera Online{% endblock %}
+{% block content %}
+<div class="big-icon">❤️</div>
+<div class="greeting">¡Llegó, {{ customer_name }}!</div>
+<p class="intro">Tu pedido <strong>#{{ order_id }}</strong> fue entregado. Esperamos que los pañales sean exactamente lo que necesitaban.</p>
+
+<div class="info-card">
+  <div class="info-card-icon">🌿</div>
+  <div class="info-card-title">Gracias por confiar en Pañalera Online</div>
+  <div class="info-card-text">
+    Recordá que enviamos el 1° y el 15 de cada mes. Cuando necesites reponer, ya sabés dónde estamos.
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div style="text-align: center; padding: 8px 0;">
+  <div style="font-size: 13px; color: #888884; margin-bottom: 16px;">¿Te gustó el producto? Compartilo con quien más lo necesite.</div>
+  <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+    <a href="https://wa.me/?text=Encontré+pañales+premium+sin+fragancias+ni+cloro+para+la+costa.+{{ frontend_url }}"
+       style="display: inline-block; background: #25D366; color: white; text-decoration: none; padding: 10px 18px; border-radius: 999px; font-size: 13px; font-weight: 600;">
+      Compartir por WhatsApp
+    </a>
+  </div>
+</div>
+
+<a href="{{ frontend_url }}/#productos" class="cta-btn">Hacer otro pedido</a>
+{% endblock %}

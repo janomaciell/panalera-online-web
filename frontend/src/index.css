@@ -1,0 +1,191 @@
+/* ── RESET ──────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #FAFAF8;
+  color: #111111;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+input, select, textarea { font-family: inherit; }
+ul, ol { list-style: none; }
+
+/* ── CSS VARIABLES ──────────────────────────────── */
+:root {
+  --white:        #FFFFFF;
+  --beige:        #F5EFE7;
+  --beige-deep:   #EDE4D8;
+  --gray-soft:    #EAEAEA;
+  --gray-mid:     #D0CEC9;
+  --gray-text:    #888884;
+  --black:        #111111;
+  --black-soft:   #222220;
+
+  --blue-soft:    #DCEEFF;
+  --blue-mid:     #B8D8F5;
+  --blue-deep:    #7BAFE0;
+  --blue-text:    #2E6EA6;
+
+  --success:      #2D7A4F;
+  --success-bg:   #E8F5EE;
+  --warning:      #B87333;
+  --error:        #C0392B;
+  --error-bg:     #FEF2F2;
+
+  --font-display: 'Clash Display', 'Satoshi', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+
+  --radius-sm:  8px;
+  --radius-md:  16px;
+  --radius-lg:  24px;
+  --radius-xl:  32px;
+  --radius-pill:999px;
+
+  --shadow-card:  0 2px 20px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+  --shadow-float: 0 8px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-hover: 0 16px 60px rgba(0,0,0,0.14), 0 4px 12px rgba(0,0,0,0.08);
+
+  --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.2s ease;
+}
+
+/* ── SCROLLBAR ──────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--beige); }
+::-webkit-scrollbar-thumb { background: var(--gray-mid); border-radius: 3px; }
+
+/* ── UTILITY CLASSES ────────────────────────────── */
+.container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+.sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
+
+.tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--blue-text);
+  background: var(--blue-soft);
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+}
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 15px; font-weight: 500;
+  padding: 13px 26px;
+  border-radius: var(--radius-pill);
+  background: var(--black);
+  color: var(--white);
+  transition: var(--transition);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  cursor: pointer;
+  border: none;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.22); }
+.btn-primary:active { transform: translateY(0); }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 14px; font-weight: 500;
+  color: var(--black);
+  padding: 13px 0;
+  border-bottom: 1.5px solid var(--gray-mid);
+  transition: var(--transition);
+  background: none; border-top: none; border-left: none; border-right: none;
+  cursor: pointer;
+}
+.btn-secondary:hover { border-color: var(--black); gap: 12px; }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 14px; font-weight: 500;
+  color: var(--gray-text);
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--gray-soft);
+  transition: var(--transition);
+  background: none; cursor: pointer;
+}
+.btn-ghost:hover { color: var(--black); border-color: var(--gray-mid); background: var(--white); }
+
+/* ── SECTION HEADERS ────────────────────────────── */
+.section-header { text-align: center; margin-bottom: 64px; }
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4vw, 54px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--black);
+  margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 17px; color: var(--gray-text);
+  max-width: 500px; margin: 0 auto;
+  line-height: 1.65;
+}
+
+/* ── ANIMATIONS ─────────────────────────────────── */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── FORM INPUTS ────────────────────────────────── */
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-label { font-size: 13px; font-weight: 500; color: var(--black); }
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid var(--gray-soft);
+  border-radius: var(--radius-sm);
+  font-size: 15px; font-family: var(--font-body);
+  background: var(--white);
+  color: var(--black);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+.form-input:focus { border-color: var(--blue-deep); box-shadow: 0 0 0 3px rgba(123,175,224,0.15); }
+.form-input.error { border-color: var(--error); }
+.form-error { font-size: 12px; color: var(--error); }
+
+/* ── SKELETON ───────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg, var(--gray-soft) 25%, #f0eeea 50%, var(--gray-soft) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-sm);
+}
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── TOAST ──────────────────────────────────────── */
+.toast {
+  position: fixed; bottom: 24px; right: 24px; z-index: 1000;
+  background: var(--black); color: var(--white);
+  padding: 14px 20px;
+  border-radius: var(--radius-md);
+  font-size: 14px; font-weight: 500;
+  box-shadow: var(--shadow-float);
+  animation: fadeIn 0.3s ease;
+  max-width: 320px;
+}
+.toast.success { background: var(--success); }
+.toast.error { background: var(--error); }
