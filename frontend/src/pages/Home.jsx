@@ -41,6 +41,9 @@ export default function Home() {
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </Link>
+              <Link to="/orientacion" className={styles.ctaBtnGhost}>
+                🎯 Ayudame a elegir
+              </Link>
               <Link to="/envios" className={styles.ctaBtnGhost}>Ver zonas de envío</Link>
             </div>
           </div>

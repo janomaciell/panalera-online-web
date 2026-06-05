@@ -19,6 +19,11 @@ class Order(models.Model):
         ('failed',   'Fallido'),
         ('refunded', 'Reembolsado'),
     ]
+    RECIPIENT_TYPE_CHOICES = [
+        ('particular',  'Particular'),
+        ('residencia',  'Residencia geriátrica'),
+        ('institucion', 'Institución / Clínica'),
+    ]
 
     id               = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user             = models.ForeignKey(
@@ -34,7 +39,11 @@ class Order(models.Model):
 
     subtotal         = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     shipping_price   = models.DecimalField(max_digits=8,  decimal_places=2, default=0)
+    discount_amount  = models.DecimalField(max_digits=8,  decimal_places=2, default=0)
     total            = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+
+    # Coupon
+    coupon_code      = models.CharField(max_length=50, blank=True)
 
     shipping_zone    = models.ForeignKey(ShippingZone, on_delete=models.SET_NULL, null=True, blank=True)
     shipping_cycle   = models.ForeignKey(
@@ -43,11 +52,23 @@ class Order(models.Model):
     )
     is_pickup        = models.BooleanField(default=False)
 
+    # Recipient type
+    recipient_type   = models.CharField(
+        max_length=20, choices=RECIPIENT_TYPE_CHOICES, default='particular'
+    )
+    institution_name = models.CharField(max_length=200, blank=True)
+    room_number      = models.CharField(max_length=20, blank=True)
+    preferred_slot   = models.CharField(
+        max_length=20, blank=True,
+        help_text='Franja horaria preferida: manana / tarde'
+    )
+
     # Delivery address snapshot
     shipping_name      = models.CharField(max_length=120)
-    shipping_address   = models.CharField(max_length=255, blank=True)   # Calle y número
-    shipping_floor     = models.CharField(max_length=20,  blank=True)   # Piso / Depto
+    shipping_address   = models.CharField(max_length=255, blank=True)
+    shipping_floor     = models.CharField(max_length=20,  blank=True)
     shipping_city      = models.CharField(max_length=100, blank=True)
+    shipping_province  = models.CharField(max_length=100, blank=True)
     shipping_postal    = models.CharField(max_length=20,  blank=True)
     shipping_phone     = models.CharField(max_length=20,  blank=True)
 
@@ -63,6 +84,12 @@ class Order(models.Model):
         verbose_name        = 'Pedido'
         verbose_name_plural = 'Pedidos'
         ordering            = ['-created_at']
+        indexes = [
+            models.Index(fields=['status']),
+            models.Index(fields=['payment_status']),
+            models.Index(fields=['user']),
+            models.Index(fields=['created_at']),
+        ]
 
     def __str__(self):
         return f'Pedido {str(self.id)[:8].upper()} — {self.shipping_name}'
@@ -92,13 +119,20 @@ class OrderItem(models.Model):
     def subtotal(self):
         return self.price * self.quantity
 
+    @property
+    def total_units(self):
+        """Physical units purchased: quantity of packs × units per pack."""
+        return self.quantity * (self.product.quantity or 1)
+
 
 class Shipment(models.Model):
     STATUS_CHOICES = [
         ('pending',    'Pendiente'),
         ('preparing',  'Preparando'),
         ('shipped',    'Enviado'),
+        ('in_transit', 'En tránsito'),
         ('delivered',  'Entregado'),
+        ('failed',     'Fallido'),
     ]
 
     id           = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

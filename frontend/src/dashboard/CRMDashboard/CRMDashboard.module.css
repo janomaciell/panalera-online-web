@@ -1,0 +1,34 @@
+.page { padding: 32px; max-width: 1100px; }
+.title { font-family: var(--font-display, 'Outfit', sans-serif); font-size: 26px; font-weight: 700; color: var(--black, #111); margin-bottom: 32px; letter-spacing: -0.02em; }
+.section { margin-bottom: 40px; }
+.sectionTitle { font-size: 16px; font-weight: 700; color: var(--black, #111); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+.badge { background: #EF4444; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 99px; }
+.loading { font-size: 14px; color: var(--gray-text, #888); display: flex; align-items: center; gap: 8px; }
+.empty { font-size: 14px; color: var(--gray-text, #888); background: var(--beige, #F5EFE7); border-radius: 12px; padding: 20px 24px; }
+.spin { animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Segments */
+.segments { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.segCard { background: #fff; border: 1px solid #EAEAEA; border-radius: 16px; padding: 20px; text-align: center; }
+.segIcon { font-size: 28px; margin-bottom: 8px; }
+.segValue { font-size: 28px; font-weight: 800; font-family: var(--font-display, 'Outfit', sans-serif); line-height: 1; margin-bottom: 6px; }
+.segLabel { font-size: 12px; color: var(--gray-text, #888); font-weight: 500; }
+
+/* Reminders */
+.reminderTable { background: #fff; border: 1px solid #EAEAEA; border-radius: 14px; overflow: hidden; }
+.reminderHeader { display: grid; grid-template-columns: 1.5fr 2fr 1fr 1fr 1fr; gap: 12px; padding: 12px 20px; background: #F9FAFB; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-text, #888); border-bottom: 1px solid #EAEAEA; }
+.reminderRow { display: grid; grid-template-columns: 1.5fr 2fr 1fr 1fr 1fr; gap: 12px; padding: 12px 20px; font-size: 13px; border-bottom: 1px solid #F3F4F6; transition: background 0.15s; }
+.reminderRow:last-child { border-bottom: none; }
+.reminderRow:hover { background: #FAFAFA; }
+.reminderType { font-weight: 600; text-transform: capitalize; }
+.statusPill { display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: 11px; font-weight: 600; background: #F3F4F6; color: #374151; width: fit-content; }
+.pending { background: #FEF3C7; color: #92400E; }
+.sent    { background: #D1FAE5; color: #065F46; }
+.skipped { background: #F3F4F6; color: #6B7280; }
+
+@media (max-width: 900px) {
+  .segments { grid-template-columns: repeat(2, 1fr); }
+  .reminderHeader, .reminderRow { grid-template-columns: 1fr 1fr; }
+  .reminderHeader span:nth-child(n+3), .reminderRow span:nth-child(n+3) { display: none; }
+}

@@ -1,0 +1,19 @@
+{% extends "base_email.html" %}
+{% block title %}Actualización de tu envío{% endblock %}
+{% block content %}
+<div class="big-icon">📍</div>
+<p class="greeting">Actualización de tu envío, {{ customer_name }}</p>
+<p class="intro">
+  Tu pedido <strong>#{{ order_id }}</strong> tiene una nueva actualización de estado.
+</p>
+
+<div class="info-card">
+  <div class="info-card-icon">🚚</div>
+  <div class="info-card-title">Estado actual: {{ andreani_status }}</div>
+  <div class="info-card-text">
+    Número de seguimiento: <strong>{{ tracking_number }}</strong>
+  </div>
+</div>
+
+<a href="{{ tracking_url }}" class="cta-btn">Rastrear mi envío →</a>
+{% endblock %}

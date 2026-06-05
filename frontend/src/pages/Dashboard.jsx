@@ -1,16 +1,17 @@
-import { useState } from 'react'
 import { Routes, Route, NavLink, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/store/useAuthStore'
 import OrdersBoard from '@/dashboard/OrdersBoard/OrdersBoard'
 import ProductManager from '@/dashboard/ProductManager/ProductManager'
 import ShippingManager from '@/dashboard/ShippingManager/ShippingManager'
-import { FiPackage, FiShoppingBag, FiMap } from 'react-icons/fi'
+import CRMDashboard from '@/dashboard/CRMDashboard/CRMDashboard'
+import { FiPackage, FiShoppingBag, FiMap, FiUsers } from 'react-icons/fi'
 import styles from './Dashboard.module.css'
 
 const NAV = [
-  { to: '/dashboard', label: 'Pedidos', icon: <FiPackage />, end: true },
-  { to: '/dashboard/productos', label: 'Productos', icon: <FiShoppingBag /> },
-  { to: '/dashboard/envios', label: 'Zonas de envío', icon: <FiMap /> },
+  { to: '/dashboard',          label: 'Pedidos',     icon: <FiPackage />,    end: true },
+  { to: '/dashboard/productos', label: 'Productos',  icon: <FiShoppingBag /> },
+  { to: '/dashboard/envios',    label: 'Zonas',       icon: <FiMap /> },
+  { to: '/dashboard/crm',       label: 'CRM',         icon: <FiUsers /> },
 ]
 
 export default function Dashboard() {
@@ -55,9 +56,10 @@ export default function Dashboard() {
       {/* Main content */}
       <main className={styles.main}>
         <Routes>
-          <Route index element={<OrdersBoard />} />
-          <Route path="productos" element={<ProductManager />} />
-          <Route path="envios" element={<ShippingManager />} />
+          <Route index              element={<OrdersBoard />} />
+          <Route path="productos"   element={<ProductManager />} />
+          <Route path="envios"      element={<ShippingManager />} />
+          <Route path="crm"         element={<CRMDashboard />} />
         </Routes>
       </main>
     </div>

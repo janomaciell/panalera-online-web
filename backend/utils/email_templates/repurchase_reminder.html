@@ -1,0 +1,26 @@
+{% extends "base_email.html" %}
+{% block title %}Tu stock está por terminarse{% endblock %}
+{% block content %}
+<div class="big-icon">📦</div>
+<p class="greeting">Hola {{ customer_name }}!</p>
+<p class="intro">
+  Calculamos que tu stock de <strong>{{ product.title }}</strong> podría estar
+  terminándose en los próximos días. ¡No te quedes sin stock!
+</p>
+
+<div class="info-card">
+  <div class="info-card-icon">🛒</div>
+  <div class="info-card-title">{{ product.title }}</div>
+  <div class="info-card-text">
+    Reposición estimada: <strong>ahora</strong><br>
+    Precio actual: <strong>${{ product.price }}</strong>
+  </div>
+</div>
+
+<a href="{{ product_url }}" class="cta-btn">Ver producto →</a>
+
+<div class="divider"></div>
+<p style="font-size:13px;color:#888884;text-align:center;">
+  Si ya realizaste tu compra, ignorá este mensaje 🙌
+</p>
+{% endblock %}

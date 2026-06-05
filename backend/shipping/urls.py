@@ -1,8 +1,13 @@
 from django.urls import path
-from .views import ShippingZoneListView, CalculateShippingView, NextCycleView
+from .views import (
+    ShippingZoneListView, CalculateShippingView, NextCycleView,
+    AndreaniQuoteView, AndreaniWebhookView,
+)
 
 urlpatterns = [
-    path('zones/',       ShippingZoneListView.as_view(),    name='shipping-zones'),
-    path('calculate/',   CalculateShippingView.as_view(),   name='shipping-calculate'),
-    path('next-cycle/',  NextCycleView.as_view(),           name='next-cycle'),
+    path('zones/',             ShippingZoneListView.as_view(),    name='shipping-zones'),
+    path('calculate/',         CalculateShippingView.as_view(),   name='shipping-calculate'),
+    path('next-cycle/',        NextCycleView.as_view(),           name='next-cycle'),
+    path('andreani/quote/',    AndreaniQuoteView.as_view(),       name='andreani-quote'),
+    path('andreani/webhook/',  AndreaniWebhookView.as_view(),     name='andreani-webhook'),
 ]

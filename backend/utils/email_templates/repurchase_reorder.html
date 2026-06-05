@@ -1,0 +1,30 @@
+{% extends "base_email.html" %}
+{% block title %}Reordenate con 1 click{% endblock %}
+{% block content %}
+<div class="big-icon">🛒</div>
+<p class="greeting">¿Te quedaste sin stock, {{ customer_name }}?</p>
+<p class="intro">
+  Ya es hora de reponer tu <strong>{{ product.title }}</strong>.
+  Con un solo click podés reordenar exactamente lo mismo que la última vez.
+</p>
+
+<div class="info-card">
+  <div class="info-card-icon">🔄</div>
+  <div class="info-card-title">Recompra rápida</div>
+  <div class="info-card-text">
+    {{ product.title }}<br>
+    Precio: <strong>${{ product.price }}</strong>
+    {% if promo_code %} · Tenés un descuento del {{ discount_pct }}% disponible{% endif %}
+  </div>
+</div>
+
+<a href="{{ reorder_url }}" class="cta-btn">
+  Comprar nuevamente →
+</a>
+
+{% if promo_code %}
+<p style="text-align:center;font-size:13px;color:#2E6EA6;margin-top:16px;">
+  Usá el código <strong>{{ promo_code }}</strong> para obtener tu descuento
+</p>
+{% endif %}
+{% endblock %}

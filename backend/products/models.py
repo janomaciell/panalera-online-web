@@ -5,10 +5,13 @@ from django.utils.text import slugify
 
 class Product(models.Model):
     CATEGORY_CHOICES = [
-        ('aposito_incontinencia', 'Apósito Incontinencia'),
-        ('panal_recto',           'Pañal Recto'),
+        ('panal_basico',          'Pañal Básico'),
+        ('panal_clasico',         'Pañal Clásico'),
         ('panal_elastizado',      'Pañal Elastizado'),
+        ('panal_juvenil',         'Pañal Juvenil'),
+        ('aposito_incontinencia', 'Apósito Incontinencia'),
         ('ropa_interior',         'Ropa Interior'),
+        ('donna_fem',             'Donna Fem'),
         ('accesorios',            'Accesorios'),
         ('algodon',               'Algodón'),
         ('otros',                 'Otros'),
@@ -36,12 +39,13 @@ class Product(models.Model):
     title         = models.CharField(max_length=200)
     slug          = models.SlugField(max_length=220, unique=True, blank=True)
     category      = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='otros')
+    subcategory   = models.CharField(max_length=50, blank=True, help_text='Ej: clasico, basico, elastizado')
     description   = models.TextField(blank=True)
-    
+
     price         = models.DecimalField(max_digits=10, decimal_places=2)
     compare_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     stock         = models.PositiveIntegerField(default=0)
-    
+
     # Dimensiones y logística
     quantity      = models.PositiveIntegerField(default=1, help_text='Unidades por paquete (pack)')
     units_per_box = models.PositiveIntegerField(default=1, null=True, blank=True, help_text='Unidades por bulto')
@@ -49,6 +53,16 @@ class Product(models.Model):
     height_cm     = models.FloatField(null=True, blank=True, help_text='Alto en cm')
     length_cm     = models.FloatField(null=True, blank=True, help_text='Largo en cm')
     width_cm      = models.FloatField(null=True, blank=True, help_text='Ancho en cm')
+
+    # Orientation / CRM
+    default_daily_units = models.FloatField(
+        null=True, blank=True,
+        help_text='Consumo diario promedio (ej: 4 pañales/día)'
+    )
+    for_adult     = models.BooleanField(default=True, help_text='Apto adultos')
+    for_child     = models.BooleanField(default=False, help_text='Apto infantil / juvenil')
+    is_nocturnal  = models.BooleanField(default=False, help_text='Uso nocturno')
+    mobility_reduced = models.BooleanField(default=False, help_text='Apto movilidad reducida')
 
     image         = models.ImageField(upload_to='products/', null=True, blank=True, help_text='Imagen de portada')
     images        = models.JSONField(default=list, blank=True)
@@ -61,6 +75,10 @@ class Product(models.Model):
         verbose_name        = 'Producto'
         verbose_name_plural = 'Productos'
         ordering            = ['category', 'size', 'title']
+        indexes = [
+            models.Index(fields=['category']),
+            models.Index(fields=['is_active']),
+        ]
 
     def save(self, *args, **kwargs):
         if not self.slug:

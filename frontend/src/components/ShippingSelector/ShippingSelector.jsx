@@ -14,6 +14,8 @@ export default function ShippingSelector({ onSelect }) {
     setMethod(m)
     if (m === 'pickup') {
       onSelect({ method: 'pickup', shipping_price: 0, city: 'Chascomús', zone: null })
+    } else if (m === 'andreani') {
+      onSelect({ method: 'andreani', shipping_price: 0, city: '', postal_code: '', needs_quote: true })
     } else {
       onSelect(null)
       setSelectedCity('')
@@ -40,10 +42,23 @@ export default function ShippingSelector({ onSelect }) {
         >
           <div className={styles.methodIcon}><FiTruck /></div>
           <div>
-            <div className={styles.methodTitle}>Envío a domicilio</div>
-            <div className={styles.methodSub}>El 1° o el 15 de cada mes</div>
+            <div className={styles.methodTitle}>Envío a domicilio (Local)</div>
+            <div className={styles.methodSub}>Reparto propio el 1° o el 15 de cada mes</div>
           </div>
           <div className={styles.radio}>{method === 'delivery' && <div className={styles.radioDot}></div>}</div>
+        </button>
+
+        <button
+          type="button"
+          className={`${styles.methodBtn} ${method === 'andreani' ? styles.active : ''}`}
+          onClick={() => handleMethodChange('andreani')}
+        >
+          <div className={styles.methodIcon}><FiTruck /></div>
+          <div>
+            <div className={styles.methodTitle}>Envío por Andreani</div>
+            <div className={styles.methodSub}>A domicilio a todo el país</div>
+          </div>
+          <div className={styles.radio}>{method === 'andreani' && <div className={styles.radioDot}></div>}</div>
         </button>
 
         <button

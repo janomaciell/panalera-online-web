@@ -58,3 +58,37 @@ class ShippingCycle(models.Model):
             cutoff_date__gte=today,
             is_active=True,
         ).order_by('ship_date').first()
+
+
+class AndreaniShipment(models.Model):
+    """
+    Registro de un envío gestionado a través de la API de Andreani.
+    """
+    STATUS_CHOICES = [
+        ('pending',    'Pendiente de creación'),
+        ('created',    'Creado en Andreani'),
+        ('in_transit', 'En tránsito'),
+        ('delivered',  'Entregado'),
+        ('failed',     'Fallido / No entregado'),
+    ]
+
+    id              = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    order           = models.OneToOneField(
+        'orders.Order', on_delete=models.CASCADE, related_name='andreani_shipment'
+    )
+    tracking_number = models.CharField(max_length=100, blank=True, db_index=True)
+    label_url       = models.URLField(blank=True, help_text='URL de etiqueta PDF generada por Andreani')
+    service_type    = models.CharField(max_length=100, blank=True, help_text='Ej: Andreani A Domicilio')
+    cost            = models.DecimalField(max_digits=8, decimal_places=2, default=0)
+    estimated_days  = models.PositiveIntegerField(default=0)
+    status          = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
+    raw_response    = models.JSONField(default=dict, blank=True, help_text='Respuesta cruda de Andreani API')
+    created_at      = models.DateTimeField(auto_now_add=True)
+    updated_at      = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name        = 'Envío Andreani'
+        verbose_name_plural = 'Envíos Andreani'
+
+    def __str__(self):
+        return f'Andreani #{self.tracking_number or "sin tracking"} — {self.order}'

@@ -1,0 +1,22 @@
+{% extends "base_email.html" %}
+{% block title %}¿Cómo fue tu experiencia?{% endblock %}
+{% block content %}
+<div class="big-icon">⭐</div>
+<p class="greeting">¿Cómo te fue, {{ customer_name }}?</p>
+<p class="intro">
+  Ya pasaron unos días desde que recibiste tu <strong>{{ product.title }}</strong>.
+  Tu opinión nos ayuda a mejorar y a que otros clientes tomen mejores decisiones.
+</p>
+
+<div class="info-card" style="text-align:center;">
+  <div class="info-card-icon">💬</div>
+  <div class="info-card-title">¿Estás satisfecho/a con el producto?</div>
+  <div style="display:flex;justify-content:center;gap:12px;margin-top:16px;">
+    <a href="{{ frontend_url }}/resena?r=5" style="text-decoration:none;font-size:28px;">⭐⭐⭐⭐⭐</a>
+  </div>
+</div>
+
+<a href="{{ frontend_url }}/resena" class="cta-btn">
+  Dejar mi reseña →
+</a>
+{% endblock %}

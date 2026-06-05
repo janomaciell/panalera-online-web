@@ -34,6 +34,7 @@ LOCAL_APPS = [
     'products',
     'orders',
     'shipping',
+    'crm',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -143,8 +144,52 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'Pañalera Online <hola@panalera.com>')
 
 # MercadoPago
-MP_ACCESS_TOKEN = os.environ.get('MP_ACCESS_TOKEN', '')
-MP_WEBHOOK_SECRET = os.environ.get('MP_WEBHOOK_SECRET', '')
+MP_ACCESS_TOKEN    = os.environ.get('MP_ACCESS_TOKEN', '')
+MP_WEBHOOK_SECRET  = os.environ.get('MP_WEBHOOK_SECRET', '')
 
-# Frontend
+# URLs
 FRONTEND_URL = os.environ.get('FRONTEND_URL', 'http://localhost:5173')
+BACKEND_URL  = os.environ.get('BACKEND_URL', 'http://localhost:8000')
+
+# Andreani
+ANDREANI_USERNAME      = os.environ.get('ANDREANI_USERNAME', '')
+ANDREANI_PASSWORD      = os.environ.get('ANDREANI_PASSWORD', '')
+ANDREANI_CLIENT_NUMBER = os.environ.get('ANDREANI_CLIENT_NUMBER', '')
+ANDREANI_CP_ORIGEN     = os.environ.get('ANDREANI_CP_ORIGEN', '7167')
+
+# Sentry (error monitoring — optional)
+SENTRY_DSN = os.environ.get('SENTRY_DSN', '')
+if SENTRY_DSN:
+    import sentry_sdk
+    sentry_sdk.init(
+        dsn=SENTRY_DSN,
+        traces_sample_rate=0.2,
+        send_default_pii=False,
+    )
+
+# Logging
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '[{asctime}] {levelname} {name} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'INFO',
+    },
+    'loggers': {
+        'services': {'level': 'DEBUG'},
+        'orders':   {'level': 'DEBUG'},
+        'crm':      {'level': 'DEBUG'},
+    },
+}
