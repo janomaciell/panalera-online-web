@@ -13,7 +13,7 @@ import { shippingService } from '@/services/shippingService'
 import { formatCurrency, formatShortDate } from '@/utils/formatCurrency'
 import {
   FiShoppingCart, FiPackage, FiCreditCard, FiBriefcase,
-  FiDollarSign, FiTag, FiCheck, FiX,
+  FiDollarSign, FiTag, FiCheck, FiX, FiAlertTriangle,
 } from 'react-icons/fi'
 import styles from './Checkout.module.css'
 
@@ -164,12 +164,10 @@ export default function Checkout() {
     try {
       const order = await createOrder.mutateAsync(orderData)
 
+      // El backend ya resuelve la URL correcta según sandbox/producción
       if (order.mp_init_point) {
+        clearCart()
         window.location.href = order.mp_init_point
-        return
-      }
-      if (order.mp_sandbox_point && !order.mp_init_point) {
-        window.location.href = order.mp_sandbox_point
         return
       }
       if (order.mp_error === 'mp_not_configured') {
@@ -415,6 +413,15 @@ export default function Checkout() {
               {step === 3 && (
                 <div className={styles.formCard}>
                   <h2 className={styles.stepTitle}>Pago</h2>
+
+                  {/* Banner sandbox */}
+                  {import.meta.env.VITE_MP_SANDBOX_MODE === 'true' && (
+                    <div className={styles.sandboxBanner}>
+                      <FiAlertTriangle size={16} />
+                      <strong>Modo Sandbox (prueba)</strong> — Usá tarjetas de prueba de MercadoPago. No se realizá ningún cobro real.
+                    </div>
+                  )}
+
                   <p className={styles.payDesc}>Serás redirigido a MercadoPago para completar el pago de forma segura.</p>
 
                   <div className={styles.payMethods}>

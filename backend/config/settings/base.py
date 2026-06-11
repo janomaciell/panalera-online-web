@@ -145,7 +145,9 @@ DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'Pañalera Online <hol
 
 # MercadoPago
 MP_ACCESS_TOKEN    = os.environ.get('MP_ACCESS_TOKEN', '')
+MP_PUBLIC_KEY      = os.environ.get('MP_PUBLIC_KEY', '')
 MP_WEBHOOK_SECRET  = os.environ.get('MP_WEBHOOK_SECRET', '')
+MP_SANDBOX_MODE    = os.environ.get('MP_SANDBOX_MODE', 'False') == 'True'
 
 # URLs
 FRONTEND_URL = os.environ.get('FRONTEND_URL', 'http://localhost:5173')

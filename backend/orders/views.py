@@ -253,8 +253,19 @@ class CreateOrderView(APIView):
                 if pref.get('id'):
                     order.mp_preference_id = pref['id']
                     order.save(update_fields=['mp_preference_id'])
-                    response_data['mp_init_point']    = pref.get('init_point')
-                    response_data['mp_sandbox_point'] = pref.get('sandbox_init_point')
+
+                    sandbox_mode = settings.MP_SANDBOX_MODE
+                    response_data['mp_sandbox_mode'] = sandbox_mode
+                    response_data['mp_public_key']   = settings.MP_PUBLIC_KEY
+
+                    if sandbox_mode:
+                        # En modo sandbox, usar siempre sandbox_init_point
+                        response_data['mp_init_point']    = pref.get('sandbox_init_point')
+                        response_data['mp_sandbox_point'] = pref.get('sandbox_init_point')
+                        logger.info(f'[MP] Sandbox mode — usando sandbox_init_point para orden {order.id}')
+                    else:
+                        response_data['mp_init_point']    = pref.get('init_point')
+                        response_data['mp_sandbox_point'] = pref.get('sandbox_init_point')
                 else:
                     logger.error(f'[MP] Preference creation failed: {pref}')
                     response_data['mp_error'] = 'No se pudo crear la preferencia de pago.'
